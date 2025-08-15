@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme{
+    /* Custom Background  Colors */
+    --color-footer : #0F172A;
+
+
+    /* Custom Text colors */
+    --color-footerText : #E2E8F0;
+}
