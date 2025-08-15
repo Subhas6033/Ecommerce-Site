@@ -181,17 +181,18 @@ const Footer = () => {
       <div className="pt-20">
         <div className="w-[85%] h-2 border-t-2 border-gray-700 mx-auto"></div>
         <div className="flex flex-col justify-center items-center">
-          <p>
+          <ul>
             <ul className="underline flex flex-col md:flex-row justify-center items-center gap-10 pb-5">
               <li>Shipping &amp; returns</li>
               <li>Terms &amp; Conditions</li>
               <li>Payments methods</li>
             </ul>
-          </p>
+          </ul>
           <p className="text-center">We accept the following payment methods</p>
           <ul className="flex flex-wrap justify-center items-center gap-5 pt-8">
             {images.map((img) => (
               <img
+                key={img.name}
                 src={img.url}
                 alt={img.name}
                 width={80}

@@ -35,7 +35,7 @@ const SlideDownAnimation = ({ className = "", children, ...prop }) => {
 };
 
 // Slide Right Animation
-const SlideRightAnimation = (className = "", children, ...prop) => {
+const SlideRightAnimation = ({className = "", children, ...prop}) => {
   return (
     <motion.div
       initial={{ x: 150, opacity: 0 }}
@@ -51,7 +51,7 @@ const SlideRightAnimation = (className = "", children, ...prop) => {
 };
 
 // Slide Left Animation
-const SlideLeftAnimation = (className = "", children, ...prop) => {
+const SlideLeftAnimation = ({className = "", children, ...prop}) => {
   return (
     <motion.div
       initial={{ x: -50, opacity: 0 }}

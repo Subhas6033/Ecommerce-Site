@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SearchCheck, X, Menu } from "lucide-react";
 import { Button, Input } from "../index";
+import { SlideLeftAnimation, SlideRightAnimation } from "../../Utils/Animation";
 
 const Nav = () => {
   const navItems = [
@@ -31,24 +33,74 @@ const Nav = () => {
   ];
 
   const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const handelSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const toggleMenuBar = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
-    <nav className="flex justify-between items-center px-10 py-5 bg-blue-950">
-      <h1 className="text-2xl font-semibold px-5" onClick={() => navigate("/")}>
+    <nav className="flex flex-wrap justify-between items-center px-6 py-4 bg-blue-950 text-white">
+      {/* Logo */}
+      <h1
+        className="text-2xl font-semibold px-2 cursor-pointer hover:text-slate-300 transition-colors"
+        onClick={() => navigate("/")}
+      >
         E-commerce Site
       </h1>
-      <Input
-        type={"search"}
-        placeholder={"Search Here"}
-        className={`md:w-96`}
-      />
-      <ul className="flex flex-wrap justify-evenly items-center gap-5">
+
+      {/* Search bar */}
+      <div className="hidden md:visible md:flex items-center gap-2">
+        <Input
+          type="search"
+          placeholder="Search Here"
+          aria-label="Search products"
+          className="md:w-80 px-3 py-2 rounded-md appearance-none"
+        />
+        <Button aria-label="Search" onClick={() => handelSubmit}>
+          <SearchCheck className="w-5 h-5 -ml-10" />
+        </Button>
+      </div>
+
+      {/* Navigation links */}
+      <ul className="hidden md:visible md:flex flex-wrap justify-center items-center gap-3">
         {navItems.map((nav) => (
-          <li>
-            <Button onClick={() => navigate(nav.url)}>{nav.name}</Button>
+          <li key={nav.url}>
+            <Button
+              onClick={() => navigate(nav.url)}
+              className="px-4 py-2 rounded-md hover:bg-blue-800 transition-colors"
+            >
+              {nav.name}
+            </Button>
           </li>
         ))}
       </ul>
+
+      {/* Hamberg Button for small screen */}
+      <button
+        onClick={toggleMenuBar}
+        className="absolute top-3 right-3 md:hidden"
+      >
+        {isMenuOpen ? <X className="size-10" /> : <Menu className="size-10" />}
+      </button>
+
+      {/* For small Screeen view */}
+      {isMenuOpen && (
+          <SlideLeftAnimation
+            className={`fixed top-0 left-0 w-40 h-full bg-blue-950 text-white flex flex-col items-center justify-center gap-6 shadow-lg z-50 md:hidden`}
+            role="menu"
+            aria-label="Mobile Navigation"
+          >
+            {navItems.map((nav) => (
+              <li key={nav.url} role="menuitem" className="list-none">
+                <Button onClick={() => navigate(nav.url)}>{nav.name}</Button>
+              </li>
+            ))}
+          </SlideLeftAnimation>
+      )}
     </nav>
   );
 };
