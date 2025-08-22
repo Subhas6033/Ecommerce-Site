@@ -1,35 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SearchCheck, X, Menu } from "lucide-react";
-import { Button, Input } from "../index";
+import { SearchCheck, X, Menu, LogIn } from "lucide-react";
+import { Button, Cart, Input, Login } from "../index";
 import { SlideLeftAnimation, SlideRightAnimation } from "../../Utils/Animation";
 
 const Nav = () => {
   const navItems = [
-    {
-      name: "Deals",
-      url: "/deals",
-    },
-    {
-      name: "Food",
-      url: "/food",
-    },
-    {
-      name: "Beverages",
-      url: "/beverages",
-    },
-    {
-      name: "Household",
-      url: "/household",
-    },
-    {
-      name: "Personal Care",
-      url: "/personal-care",
-    },
-    {
-      name: "My Orders",
-      url: "/order",
-    },
+    // {
+    //   name: "Deals",
+    //   url: "/deals",
+    // },
+    // {
+    //   name: "Food",
+    //   url: "/food",
+    // },
+    // {
+    //   name: "Beverages",
+    //   url: "/beverages",
+    // },
+    // {
+    //   name: "Household",
+    //   url: "/household",
+    // },
+    // {
+    //   name: "Personal Care",
+    //   url: "/personal-care",
+    // },
+    // {
+    //   name: "My Orders",
+    //   url: "/order",
+    // },
   ];
 
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const Nav = () => {
   };
 
   return (
-    <nav className="flex flex-wrap justify-between items-center px-6 py-4 bg-blue-950 text-white">
+    <nav className="flex flex-wrap justify-between items-center px-6 py-4 bg-white text-black">
       {/* Logo */}
       <h1
         className="text-2xl font-semibold px-2 cursor-pointer hover:text-slate-300 transition-colors"
@@ -67,18 +67,15 @@ const Nav = () => {
 
       {/* Navigation links */}
       <ul className="hidden md:visible md:flex flex-wrap justify-center items-center gap-3">
-        {navItems.map((nav) => (
-          <li key={nav.url}>
-            <Button
-              onClick={() => navigate(nav.url)}
-              className="px-4 py-2 rounded-md hover:bg-blue-800 transition-colors"
-            >
-              {nav.name}
-            </Button>
-          </li>
-        ))}
+        <div className="w-fit px-2 flex justify-center items-center gap-10">
+          <div className="">
+            <Login />
+          </div>
+          <div>
+            <Cart />
+          </div>
+        </div>
       </ul>
-
       {/* Hamberg Button for small screen */}
       <button
         onClick={toggleMenuBar}
@@ -89,17 +86,17 @@ const Nav = () => {
 
       {/* For small Screeen view */}
       {isMenuOpen && (
-          <SlideLeftAnimation
-            className={`fixed top-0 left-0 w-40 h-full bg-blue-950 text-white flex flex-col items-center justify-center gap-6 shadow-lg z-50 md:hidden`}
-            role="menu"
-            aria-label="Mobile Navigation"
-          >
-            {navItems.map((nav) => (
-              <li key={nav.url} role="menuitem" className="list-none">
-                <Button onClick={() => navigate(nav.url)}>{nav.name}</Button>
-              </li>
-            ))}
-          </SlideLeftAnimation>
+        <SlideLeftAnimation
+          className={`fixed top-0 left-0 w-40 h-full bg-blue-950 text-white flex flex-col items-center justify-center gap-6 shadow-lg z-50 md:hidden`}
+          role="menu"
+          aria-label="Mobile Navigation"
+        >
+          {navItems.map((nav) => (
+            <li key={nav.url} role="menuitem" className="list-none">
+              <Button onClick={() => navigate(nav.url)}>{nav.name}</Button>
+            </li>
+          ))}
+        </SlideLeftAnimation>
       )}
     </nav>
   );

@@ -106,23 +106,23 @@ const Footer = () => {
   const images = [
     {
       name: "Rupay",
-      url: "./public/Payment/Rupay.png",
+      url: "/Payment/Rupay.png",
     },
     {
       name: "Paypal",
-      url: "./public/Payment/Paypal.jpg",
+      url: "/Payment/Paypal.jpg",
     },
     {
       name: "Visa",
-      url: "./public/Payment/visa.jpg",
+      url: "/Payment/visa.jpg",
     },
     {
       name: "Mastercard",
-      url: "./public/Payment/Mastercard.png",
+      url: "/Payment/Mastercard.png",
     },
     {
       name: "American Express",
-      url: "./public/Payment/American express.png",
+      url: "/Payment/American express.png",
     },
   ];
 
