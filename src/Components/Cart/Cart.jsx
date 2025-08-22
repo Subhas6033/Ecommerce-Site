@@ -4,20 +4,17 @@ import { Link } from "react-router-dom";
 
 const Cart = ({ totalCart = "" }) => {
   return (
-    <div className="">
-      <Link
-        className="flex justify-center items-center gap-1 cursor-pointer hover:text-slate-300 transition-colors"
-        to="/cart"
-      >
+    <Link className="flex justify-center items-center gap-2 px-2" to={"/cart"}>
+      <span>
         <span>
           <ShoppingCart />
-          Cart
         </span>
-        <span className="ml-1 text-sm font-semibold">
+        <span className="text-xl font-semibold absolute top-0 right-45">
           {totalCart ? totalCart : 0}
         </span>
-      </Link>
-    </div>
+      </span>
+      <span>Cart</span>
+    </Link>
   );
 };
 
