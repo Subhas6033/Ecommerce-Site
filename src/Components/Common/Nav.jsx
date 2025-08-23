@@ -37,7 +37,7 @@ const Nav = () => {
             />
             <Button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-md h-10 px-4 flex items-center justify-center"
+              className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-r-lg h-10 px-4 flex items-center justify-center"
             >
               <SearchCheck className="w-4 h-4" />
             </Button>
@@ -56,7 +56,7 @@ const Nav = () => {
             <div className="p-2 hover:bg-gray-100 rounded-md transition-colors">
               <Cart />
             </div>
-            <div className="p-2 hover:bg-gray-100 rounded-md transition-colors">
+            <div className="py-2 px-5 hover:bg-gray-100 rounded-md transition-colors hover:cursor-pointer">
               <Login />
             </div>
           </div>
